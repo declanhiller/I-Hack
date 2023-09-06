@@ -176,6 +176,17 @@ public partial class @Keybinds: IInputActionCollection2, IDisposable
                     ""action"": ""Hack"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""f216f279-c422-4b4e-baa3-0bbe0caec733"",
+                    ""path"": ""<Keyboard>/g"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Hack"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }

@@ -5,29 +5,49 @@ using UnityEngine;
 using UnityEngine.Serialization;
 
 namespace HackingSystem {
-    public class HackingIndicator : MonoBehaviour {
+    public class TargetingIndicator : MonoBehaviour {
 
-        [FormerlySerializedAs("focusedStateContainer")] [FormerlySerializedAs("focusedObjectStateMachine")] public HackableObject focusedObject;
-        
+        [FormerlySerializedAs("focusedObject")]
+        [FormerlySerializedAs("focusedStateContainer")]
+        [FormerlySerializedAs("focusedObjectStateMachine")]
+        public Targetable focused;
         private MeshFilter _focusedObjectMeshFilter;
-        private RectTransform _targetIndicator;
         
+        private RectTransform _targetIndicator;
+
         [SerializeField] private Camera robotCamera;
 
         [SerializeField] private RectTransform tl;
         [SerializeField] private RectTransform tr;
         [SerializeField] private RectTransform bl;
         [SerializeField] private RectTransform br;
-        
-        
+
+        public bool Locked {
+            get => _locked;
+            set {
+                _locked = value;
+                if (!_locked) {
+                    focused = _storedTargetable;
+                    if (focused == null) return;
+                    _focusedObjectMeshFilter = focused.GetComponent<MeshFilter>();
+                }
+            }
+        }
+
+        private bool _locked;
+
+        //for if a targetable changes while indicator is locked, makes it so that when we unlock we can set a targetable
+        private Targetable _storedTargetable;
+
+
         private void Start() {
-            HackableObject.OnHackableStateChange += NewHackableObject;
+            Targetable.OnAnyTargetableStateChange += NewTargetableObject;
             _targetIndicator = GetComponent<RectTransform>();
             _targetIndicator.gameObject.SetActive(false);
         }
 
         private void Update() {
-            if (focusedObject == null) {
+            if (focused == null) {
                 return;
             }
 
@@ -35,22 +55,37 @@ namespace HackingSystem {
 
         }
 
-        public void NewHackableObject(HackableObject hackableObject, HackableObject.HackableState newState) {
-            if (hackableObject.State == HackableObject.HackableState.Focused) {
-                focusedObject = null;
+        public void NewTargetableObject(Targetable targetable, Targetable.TargetableState newState) {
+            if (Locked) {
+
+                if (targetable.State == Targetable.TargetableState.Focused) {
+                    _storedTargetable = null;
+                }
+
+                if (newState == Targetable.TargetableState.Focused) {
+                    _storedTargetable = targetable;
+                }
+                
+                return;
+            }
+            
+            if (targetable.State == Targetable.TargetableState.Focused) {
+                focused = null;
                 _focusedObjectMeshFilter = null;
                 _targetIndicator.gameObject.SetActive(false);
                 return;
             }
-            if (newState != HackableObject.HackableState.Focused) return;
-            focusedObject = hackableObject;
-            _focusedObjectMeshFilter = hackableObject.GetComponent<MeshFilter>();
+
+            if (newState != Targetable.TargetableState.Focused) return;
+
+            focused = targetable;
+            _focusedObjectMeshFilter = targetable.GetComponent<MeshFilter>();
             _targetIndicator.gameObject.SetActive(true);
             MatchIndicatorToBox();
         }
-        
+
         public Rect ScreenSpaceBoundingBox() {
-            Matrix4x4 transformLocalToWorldMatrix = focusedObject.transform.localToWorldMatrix;
+            Matrix4x4 transformLocalToWorldMatrix = focused.transform.localToWorldMatrix;
             Vector3[] meshVertices = _focusedObjectMeshFilter.mesh.vertices;
             IEnumerable<Vector3> screenSpaceVertices = meshVertices
                 .Select(v => robotCamera.WorldToScreenPoint(transformLocalToWorldMatrix.MultiplyPoint3x4(v)));

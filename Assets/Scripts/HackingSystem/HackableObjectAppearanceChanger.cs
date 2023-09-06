@@ -14,18 +14,18 @@ namespace HackingSystem {
         
         
         private void Start() {
-            HackableObject.OnHackableStateChange += ChangeHackableObjectAppearance;
+            Targetable.OnAnyTargetableStateChange += ChangeTargetableObjectAppearance;
         }
 
-        public void ChangeHackableObjectAppearance(HackableObject hackableObject, HackableObject.HackableState state) {
+        public void ChangeTargetableObjectAppearance(Targetable targetable, Targetable.TargetableState state) {
             switch (state) {
-               case HackableObject.HackableState.Focused:
-                   hackableObject.GetComponent<MeshRenderer>().material.SetFloat("_Strength", 1f);
+               case Targetable.TargetableState.Focused:
+                   targetable.GetComponent<MeshRenderer>().material.SetFloat("_Strength", 1f);
                    // hackableObject.GetComponent<MeshRenderer>().material.SetColor("_Color", washedOutColor);
                    break;
-               case HackableObject.HackableState.InRange:
+               case Targetable.TargetableState.InRange:
                    break;
-               case HackableObject.HackableState.OutOfRange:
+               case Targetable.TargetableState.OutOfRange:
                    break;
             }
         }

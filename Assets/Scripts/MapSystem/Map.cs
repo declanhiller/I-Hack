@@ -32,7 +32,7 @@ namespace DefaultNamespace {
 
             Invoke(nameof(SetWidthHeight), 0.1f);
             
-            _thingsToTrack = GameObject.FindObjectsOfType<HackableObject>().Select(obj => obj.gameObject).ToArray();
+            _thingsToTrack = GameObject.FindObjectsOfType<Targetable>().Select(obj => obj.gameObject).ToArray();
             
             foreach (GameObject objectToTrack in _thingsToTrack) {
                 GameObject marker = Instantiate(mapMarker, transform);
