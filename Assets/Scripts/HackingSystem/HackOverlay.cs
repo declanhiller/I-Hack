@@ -9,6 +9,9 @@ namespace HackingSystem {
         [SerializeField] private RectTransform rectTransform;
         [SerializeField] private LineRenderer lineRenderer;
 
+        [SerializeField] private float verticalPadding = 10;
+        [SerializeField] private float horizontalPadding = 10;
+
         [SerializeField] private float offset = -5;
 
         private GameObject _containedUI;
@@ -45,7 +48,9 @@ namespace HackingSystem {
 
         public void SetContainedUI(GameObject ui) {
             RectTransform uiTransform = ui.GetComponent<RectTransform>();
-            uiTransform.SetParent(transform);
+            Vector2 uiSize = uiTransform.rect.size;
+            rectTransform.sizeDelta = new Vector2(uiSize.x + horizontalPadding, uiSize.y + verticalPadding);
+            uiTransform.SetParent(transform, false);
             uiTransform.anchoredPosition = new Vector3(0, 0);
             _containedUI = ui;
         }
