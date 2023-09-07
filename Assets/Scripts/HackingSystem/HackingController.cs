@@ -70,6 +70,8 @@ namespace HackingSystem {
                 hackOverlay.TrackingLocation = _currentHackable.gameObject.transform;
                 _isHacking = true;
                 targetableIndicator.Locked = true;
+                GameObject ui = _currentHackable.CreateUI();
+                hackOverlay.SetContainedUI(ui);
             }
             else {
                 hackOverlay.TrackingLocation = null;

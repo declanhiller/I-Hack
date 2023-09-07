@@ -10,11 +10,14 @@ namespace HackingSystem {
         [SerializeField] private LineRenderer lineRenderer;
 
         [SerializeField] private float offset = -5;
+
+        private GameObject _containedUI;
         
         public Transform TrackingLocation { private get; set; }
 
-        private void Start() {
-            
+        private void OnDisable() {
+            Destroy(_containedUI);
+            _containedUI = null;
         }
 
         private void Update() {
@@ -36,18 +39,15 @@ namespace HackingSystem {
 
             Vector3 proposedWorldPoint = -robotCamera.transform.up * (Vector3.Distance(robotCamera.transform.position, TrackingLocation.position) / offset) + TrackingLocation.position;
             
-            // //check if bottom is available
-            // Vector3 proposedScreenPoint = robotCamera.WorldToScreenPoint(proposedWorldPoint);
-            //
-            // if (proposedScreenPoint.y -= overlayRect.y) {
-            //     
-            // }
-            
-            
-            
             
             return proposedWorldPoint;
         }
 
+        public void SetContainedUI(GameObject ui) {
+            RectTransform uiTransform = ui.GetComponent<RectTransform>();
+            uiTransform.SetParent(transform);
+            uiTransform.anchoredPosition = new Vector3(0, 0);
+            _containedUI = ui;
+        }
     }
 }
