@@ -26,8 +26,8 @@ public class Door : MonoBehaviour {
     private void Start() {
         _leftStartDoorPoint = leftDoor.position;
         _rightStartDoorPoint = rightDoor.position;
-        _leftEndDoorPoint = leftDoor.position + leftDoor.transform.up * doorMoveDistance;
-        _rightEndDoorPoint = rightDoor.position + rightDoor.transform.up * -doorMoveDistance;
+        _leftEndDoorPoint = _leftStartDoorPoint + leftDoor.transform.up * doorMoveDistance;
+        _rightEndDoorPoint = _rightStartDoorPoint + rightDoor.transform.up * -doorMoveDistance;
     }
 
 
@@ -43,7 +43,6 @@ public class Door : MonoBehaviour {
 
     IEnumerator DoorAnimation(bool isOpening) {
         
-        float distanceSquared = 0;
         float timer = 0;
 
         Vector3 leftDoorStartingPosition = leftDoor.position;
