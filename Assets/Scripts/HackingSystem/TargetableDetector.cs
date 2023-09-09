@@ -18,8 +18,6 @@ namespace HackingSystem {
 
         [SerializeField] private Camera robotCamera;
 
-        [SerializeField] private LayerMask playerMask;
-
         
         private void Start() {
             Targetable[] hackableObjects = GameObject.FindObjectsOfType<Targetable>();
@@ -36,13 +34,6 @@ namespace HackingSystem {
             Vector3 position = transform.position;
             foreach (Targetable targetableObject in _targetableObjects) {
                 if (Vector3.SqrMagnitude(targetableObject.transform.position - position) > _rangeSquared) {
-                    targetableObject.State = Targetable.TargetableState.OutOfRange;
-                    continue;
-                }
-
-                Vector3 direction = targetableObject.transform.position - position;
-                
-                if (Physics.Raycast(new Ray(position, direction), Vector3.Magnitude(direction), playerMask)) {
                     targetableObject.State = Targetable.TargetableState.OutOfRange;
                     continue;
                 }
