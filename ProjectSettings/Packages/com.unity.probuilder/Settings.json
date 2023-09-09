@@ -19,11 +19,14 @@
                 "value": "{\"m_Value\":\"ProBuilderLog.txt\"}"
             },
             {
+<<<<<<< HEAD
                 "type": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                 "key": "editor.materialPalettePath",
                 "value": "{\"m_Value\":\"Assets/ProBuilder Data/Default Material Palette.asset\"}"
             },
             {
+=======
+>>>>>>> e2751762707721ec9cce9e9b568070cb2bc7d110
                 "type": "UnityEngine.ProBuilder.SemVer, Unity.ProBuilder, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
                 "key": "about.identifier",
                 "value": "{\"m_Value\":{\"m_Major\":5,\"m_Minor\":0,\"m_Patch\":7,\"m_Build\":-1,\"m_Type\":\"\",\"m_Metadata\":\"\",\"m_Date\":\"\"}}"
@@ -35,16 +38,36 @@
             },
             {
                 "type": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+<<<<<<< HEAD
                 "key": "UnityEngine.ProBuilder.ProBuilderEditor-isUtilityWindow",
+=======
+                "key": "experimental.enabled",
+>>>>>>> e2751762707721ec9cce9e9b568070cb2bc7d110
                 "value": "{\"m_Value\":false}"
             },
             {
                 "type": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+<<<<<<< HEAD
+=======
+                "key": "lightmapping.autoUnwrapLightmapUV",
+                "value": "{\"m_Value\":true}"
+            },
+            {
+                "type": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+>>>>>>> e2751762707721ec9cce9e9b568070cb2bc7d110
                 "key": "editor.toolbarIconGUI",
                 "value": "{\"m_Value\":false}"
             },
             {
                 "type": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+<<<<<<< HEAD
+=======
+                "key": "UnityEngine.ProBuilder.ProBuilderEditor-isUtilityWindow",
+                "value": "{\"m_Value\":false}"
+            },
+            {
+                "type": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+>>>>>>> e2751762707721ec9cce9e9b568070cb2bc7d110
                 "key": "editor.backFaceSelectEnabled",
                 "value": "{\"m_Value\":false}"
             },
@@ -54,6 +77,7 @@
                 "value": "{\"m_Value\":false}"
             },
             {
+<<<<<<< HEAD
                 "type": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                 "key": "experimental.enabled",
                 "value": "{\"m_Value\":false}"
@@ -109,6 +133,8 @@
                 "value": "{\"m_Value\":false}"
             },
             {
+=======
+>>>>>>> e2751762707721ec9cce9e9b568070cb2bc7d110
                 "type": "UnityEngine.ProBuilder.RectSelectMode, Unity.ProBuilder, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
                 "key": "editor.dragSelectRectMode",
                 "value": "{\"m_Value\":0}"
@@ -122,6 +148,7 @@
                 "type": "UnityEngine.ProBuilder.SelectMode, Unity.ProBuilder, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
                 "key": "editor.selectMode",
                 "value": "{\"m_Value\":1}"
+<<<<<<< HEAD
             },
             {
                 "type": "UnityEngine.ProBuilder.SelectMode, Unity.ProBuilder, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
@@ -222,6 +249,8 @@
                 "type": "UnityEngine.ProBuilder.ExtrudeMethod, Unity.ProBuilder, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
                 "key": "editor.extrudeMethod",
                 "value": "{\"m_Value\":2}"
+=======
+>>>>>>> e2751762707721ec9cce9e9b568070cb2bc7d110
             }
         ]
     }
