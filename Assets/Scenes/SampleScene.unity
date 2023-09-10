@@ -1547,6 +1547,8 @@ GameObject:
   - component: {fileID: 390599021}
   - component: {fileID: 390599023}
   - component: {fileID: 390599022}
+  - component: {fileID: 390599025}
+  - component: {fileID: 390599024}
   m_Layer: 5
   m_Name: Image
   m_TagString: Untagged
@@ -1612,6 +1614,36 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 390599020}
   m_CullTransparentMesh: 1
+--- !u!114 &390599024
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 390599020}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ddcc117d2133ba4bb1f6eb7fe707088, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  visibleDuration: 1
+  invisibleDuration: 1
+  image: {fileID: 390599022}
+--- !u!114 &390599025
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 390599020}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ddcc117d2133ba4bb1f6eb7fe707088, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  visibleDuration: 0.3
+  invisibleDuration: 0.5
+  image: {fileID: 0}
 --- !u!1 &412667049
 GameObject:
   m_ObjectHideFlags: 0
@@ -1989,7 +2021,7 @@ MonoBehaviour:
     type: 3}
   playerMarker: {fileID: 426831810}
   playerViewMarker: {fileID: 1865861911}
-  mapScale: 0.05
+  mapScale: 0.025
 --- !u!114 &467049516
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7317,7 +7349,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5359a0a530fba4ca79039b20647adcd4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cameraSpeed: 80
+  cameraSpeed: 100
   minHorizontalClamp: -45
   maxHorizontalClamp: 45
   minVerticalClamp: -30
