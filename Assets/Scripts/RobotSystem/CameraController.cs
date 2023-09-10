@@ -18,6 +18,9 @@ public class CameraController : MonoBehaviour {
 
     private float _rotationX;
 
+    private float _tutorialTimer;
+    [SerializeField] private GameObject tutorialPrompt;
+
     // Start is called before the first frame update
     void Start() {
         _keybinds = GetComponentInParent<InputController>().Keybinds;
@@ -30,6 +33,15 @@ public class CameraController : MonoBehaviour {
         float signedYAngle = eulerAngles.y;
         if (signedYAngle > 180) {
             signedYAngle -= 360;
+        }
+
+        if (inputValue.sqrMagnitude > 0)
+        {
+            _tutorialTimer += Time.deltaTime;
+            if (_tutorialTimer >= 2)
+            {
+                tutorialPrompt.SetActive(false);
+            }
         }
 
 
