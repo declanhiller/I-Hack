@@ -35,6 +35,10 @@ namespace HackingSystem {
                         _focusedObjectMeshFilter = focused.GetComponentInChildren<MeshFilter>();
                     }
                 }
+                else
+                {
+                    _storedTargetable = focused;
+                }
             }
         }
 
