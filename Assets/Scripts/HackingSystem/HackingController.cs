@@ -19,13 +19,14 @@ namespace HackingSystem {
         private HackableLock _currentHackable;
 
         [SerializeField] private HackOverlay hackOverlay;
-        
+
+        [SerializeField] private Texture2D mouseCursor;
 
         private void Start() {
             Targetable.OnAnyTargetableStateChange += NewFocusedObject;
             _keybinds = inputController.Keybinds;
             _keybinds.Player.Hack.performed += Hack;
-
+            
         }
 
         public void NewFocusedObject(Targetable targetable, Targetable.TargetableState newState) {
