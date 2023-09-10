@@ -46,7 +46,7 @@ public class TankDriveController : MonoBehaviour {
             _throttle += inputDirection.y * throttleIncrease;
         }
 
-        _rb.velocity = transform.forward * _throttle * maxThrottle;
+        _rb.velocity = transform.forward * _throttle * maxThrottle + new Vector3(0, _rb.velocity.y, 0);
         
         float rotation = inputDirection.x;
         if (inputDirection.y < 0) {
