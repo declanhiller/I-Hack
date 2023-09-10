@@ -32,11 +32,12 @@ public class CameraController : MonoBehaviour {
             signedYAngle -= 360;
         }
 
-        //
-        // if ((inputValue.x > 0 && signedYAngle < maxHorizontalClamp) ||
-        //     (inputValue.x < 0 && signedYAngle > minHorizontalClamp)) {
-        // transform.Rotate(0, cameraSpeed * Time.deltaTime * inputValue.x, 0);
-        // }
+
+        if ((inputValue.x > 0 && signedYAngle < maxHorizontalClamp) ||
+            (inputValue.x < 0 && signedYAngle > minHorizontalClamp))
+        {
+            transform.Rotate(0, cameraSpeed * Time.deltaTime * inputValue.x, 0);
+        }
 
         _rotationX += cameraSpeed * Time.deltaTime * inputValue.y;
 

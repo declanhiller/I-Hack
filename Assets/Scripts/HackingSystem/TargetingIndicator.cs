@@ -30,6 +30,10 @@ namespace HackingSystem {
                     focused = _storedTargetable;
                     if (focused == null) return;
                     _focusedObjectMeshFilter = focused.GetComponent<MeshFilter>();
+                    if (_focusedObjectMeshFilter == null)
+                    {
+                        _focusedObjectMeshFilter = focused.GetComponentInChildren<MeshFilter>();
+                    }
                 }
             }
         }
@@ -80,6 +84,10 @@ namespace HackingSystem {
 
             focused = targetable;
             _focusedObjectMeshFilter = targetable.GetComponent<MeshFilter>();
+            if (_focusedObjectMeshFilter == null)
+            {
+                _focusedObjectMeshFilter = focused.GetComponentInChildren<MeshFilter>();
+            }
             _targetIndicator.gameObject.SetActive(true);
             MatchIndicatorToBox();
         }
