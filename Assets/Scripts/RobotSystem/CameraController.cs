@@ -20,6 +20,9 @@ public class CameraController : MonoBehaviour {
 
     private float _tutorialTimer;
 
+    private bool _isPlaying;
+    [SerializeField] private AudioSource cameraSound;
+
     // Start is called before the first frame update
     void Start() {
         _keybinds = GetComponentInParent<InputController>().Keybinds;
@@ -38,6 +41,17 @@ public class CameraController : MonoBehaviour {
             (inputValue.x < 0 && signedYAngle > minHorizontalClamp))
         {
             transform.Rotate(0, cameraSpeed * Time.deltaTime * inputValue.x, 0);
+        }
+        
+        if (!_isPlaying && inputValue.SqrMagnitude() > 0.1f)
+        {
+            cameraSound.Play();
+            cameraSound.time = 0.4f;
+            _isPlaying = true;
+        } else if (_isPlaying && inputValue.SqrMagnitude() < 0.1f)
+        {
+            cameraSound.Stop();
+            _isPlaying = false;
         }
 
         _rotationX += cameraSpeed * Time.deltaTime * inputValue.y;

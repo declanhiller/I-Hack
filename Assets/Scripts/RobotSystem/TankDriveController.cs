@@ -19,6 +19,9 @@ public class TankDriveController : MonoBehaviour {
     [SerializeField] private float throttleIncrease = 0.5f;
 
     [SerializeField] private float rotationSpeed;
+
+    [SerializeField] private AudioSource driveSound;
+    private bool _isPlaying;
     
     // Start is called before the first frame update
 
@@ -39,6 +42,17 @@ public class TankDriveController : MonoBehaviour {
 
         if (Math.Abs(inputDirection.y) <= 0.05f && _throttle != 0) {
             _throttle = 0;
+        }
+
+        if (!_isPlaying && inputDirection.SqrMagnitude() > 0.1f)
+        {
+            driveSound.Play();
+            driveSound.time = 0.7f;
+            _isPlaying = true;
+        } else if (_isPlaying && inputDirection.SqrMagnitude() < 0.1f)
+        {
+            driveSound.Stop();
+            _isPlaying = false;
         }
 
         if ((inputDirection.y > 0 && _throttle <= maxThrottle) || 

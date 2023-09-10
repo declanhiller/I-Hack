@@ -22,6 +22,10 @@ namespace HackingSystem {
 
         [SerializeField] private Texture2D mouseCursor;
 
+        [SerializeField] private AudioSource audioSource;
+        [SerializeField] private AudioClip hackAudioClip;
+        [SerializeField] private AudioClip stopHackingAudioClip;
+
         private void Start() {
             Targetable.OnAnyTargetableStateChange += NewFocusedObject;
             _keybinds = inputController.Keybinds;
@@ -57,10 +61,14 @@ namespace HackingSystem {
         public void Hack(InputAction.CallbackContext context) {
             if (_isHacking) { //turn off hacking menu
                 ActivateOverlay(false);
+                audioSource.clip = stopHackingAudioClip;
+                audioSource.Play();
             }
             else { //turn on hacking menu if object is focused
                 if (_currentHackable == null) return;
                 ActivateOverlay(true);
+                audioSource.clip = hackAudioClip;
+                audioSource.Play();
             }
             
         }

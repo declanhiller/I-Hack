@@ -19,6 +19,10 @@ public class Door : MonoBehaviour {
     private Coroutine _currentDoorAnimation;
 
     [SerializeField] private float doorVelocity;
+
+    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioClip doorOpen;
+    [SerializeField] private AudioClip doorClose;
     
     public bool IsOpen { get; private set; }
 
@@ -35,6 +39,18 @@ public class Door : MonoBehaviour {
         if (_currentDoorAnimation != null) {
             StopCoroutine(_currentDoorAnimation);
         }
+
+        if (closed)
+        {
+            audioSource.clip = doorClose;
+            
+        }
+        else
+        {
+            audioSource.clip = doorOpen;
+        }
+        
+        audioSource.Play();
 
         _currentDoorAnimation = StartCoroutine(DoorAnimation(closed));
 
