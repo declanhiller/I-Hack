@@ -95,8 +95,10 @@ namespace HackingSystem {
         public Rect ScreenSpaceBoundingBox() {
             Matrix4x4 transformLocalToWorldMatrix = focused.transform.localToWorldMatrix;
             Vector3[] meshVertices = _focusedObjectMeshFilter.mesh.vertices;
+            Vector3 scale = _focusedObjectMeshFilter.transform.localScale;
             IEnumerable<Vector3> screenSpaceVertices = meshVertices
-                .Select(v => robotCamera.WorldToScreenPoint(transformLocalToWorldMatrix.MultiplyPoint3x4(v)));
+                .Select(v => robotCamera.WorldToScreenPoint(
+                    transformLocalToWorldMatrix.MultiplyPoint3x4(new Vector3(v.x * scale.x, v.y * scale.y, v.z * scale.z))));
 
             float maxX = screenSpaceVertices.Max(v => v.x);
             float maxY = screenSpaceVertices.Max(v => v.y);
