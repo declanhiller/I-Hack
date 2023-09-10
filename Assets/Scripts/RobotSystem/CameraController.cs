@@ -19,7 +19,6 @@ public class CameraController : MonoBehaviour {
     private float _rotationX;
 
     private float _tutorialTimer;
-    [SerializeField] private GameObject tutorialPrompt;
 
     // Start is called before the first frame update
     void Start() {
@@ -34,16 +33,6 @@ public class CameraController : MonoBehaviour {
         if (signedYAngle > 180) {
             signedYAngle -= 360;
         }
-
-        if (inputValue.sqrMagnitude > 0)
-        {
-            _tutorialTimer += Time.deltaTime;
-            if (_tutorialTimer >= 2)
-            {
-                tutorialPrompt.SetActive(false);
-            }
-        }
-
 
         if ((inputValue.x > 0 && signedYAngle < maxHorizontalClamp) ||
             (inputValue.x < 0 && signedYAngle > minHorizontalClamp))
