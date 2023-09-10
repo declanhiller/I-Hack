@@ -1,9 +1,10 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using HackingSystem;
 using UnityEngine;
 
-public class Door : MonoBehaviour {
+public class Door : Usable {
 
     [SerializeField] private Transform leftDoor;
     [SerializeField] private Transform rightDoor;
@@ -23,8 +24,6 @@ public class Door : MonoBehaviour {
     [SerializeField] private AudioSource audioSource;
     [SerializeField] private AudioClip doorOpen;
     [SerializeField] private AudioClip doorClose;
-    
-    public bool IsOpen { get; private set; }
 
 
     private void Start() {
@@ -35,7 +34,7 @@ public class Door : MonoBehaviour {
     }
 
 
-    public void UseDoor(bool closed) {
+    public override void Use(bool closed) {
         if (_currentDoorAnimation != null) {
             StopCoroutine(_currentDoorAnimation);
         }
